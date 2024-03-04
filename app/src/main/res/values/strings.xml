@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">chronosaurusRevision</string>
+    <string name="title_home">Classes</string>
+<!--    <string name="title_classes">Classes</string>-->
+    <string name="classesHome">classes</string>
+    <string name="title_dashboard">Assignments and Exams</string>
+<!--    <string name="title_assign">Assignments and Exams</string>-->
+    <string name="assignHome">Assignments and Exams</string>
+    <string name="tasksHome">Tasks</string>
+    <string name="title_notifications">Tasks</string>
+<!--    <string name="title_tasks">Tasks</string>-->
+</resources>
