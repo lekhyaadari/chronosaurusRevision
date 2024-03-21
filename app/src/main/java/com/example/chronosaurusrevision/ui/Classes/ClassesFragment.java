@@ -8,10 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ClassesFragment extends Fragment {
 
@@ -37,7 +38,7 @@ public class ClassesFragment extends Fragment {
     EditText username;
     EditText year;
     Button submit;
-    FloatingActionButton addClass;
+//    FloatingActionButton addClass;
     ValueEventListener valueEventListener;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -47,70 +48,59 @@ public class ClassesFragment extends Fragment {
         binding = FragmentClassesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-//        final TextView textView = binding.textClasses;
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
+        RecyclerView recyclerView;
+        List<DataClass> dataList;
+        DatabaseReference databaseReference;
+        //ValueEventListener valueEventListener;
+        recyclerView = (RecyclerView) root.findViewById(R.id.recyclerView);
+
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 1);
+        recyclerView.setLayoutManager(gridLayoutManager);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setCancelable(false);
+        builder.setView(R.layout.progress_layout);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        dataList = new ArrayList<>();
+
+        MyAdapter adapter = new MyAdapter(getContext(), dataList);
+        recyclerView.setAdapter(adapter);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("chronosaurus");
+        dialog.show();
+
+        valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                dataList.clear();
+                for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                    DataClass dataClass = itemSnapshot.getValue(DataClass.class);
+                    dataClass.setKey(itemSnapshot.getKey());
+                    dataList.add(dataClass);
+                }
+                adapter.notifyDataSetChanged();
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                dialog.dismiss();
+            }
+        });
+
+        FloatingActionButton addClass = (FloatingActionButton) root.findViewById(R.id.fab);
+        //the code below is causing the app to crash.
+        addClass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View root) {
+                Intent intent = new Intent(getActivity(), UploadActivity.class);
+                startActivity(intent);
+            }
+        });
         return root;
     }
-
-    public class ClassesClass extends AppCompatActivity {
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.fragment_classes);
-            addClass = (FloatingActionButton) addClass.findViewById(R.id.fab);
-
-            RecyclerView recyclerView = null;
-            List<DataClass> dataList;
-            DatabaseReference databaseReference;
-            //ValueEventListener valueEventListener;
-            recyclerView = recyclerView.findViewById(R.id.recyclerView);
-
-            Context ClassesFragment = null;
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(ClassesClass.this, 1);
-            recyclerView.setLayoutManager(gridLayoutManager);
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(ClassesClass.this);
-            builder.setCancelable(false);
-            builder.setView(R.layout.progress_layout);
-            AlertDialog dialog = builder.create();
-            dialog.show();
-
-            dataList = new ArrayList<>();
-
-            MyAdapter adapter = new MyAdapter(ClassesClass.this, dataList);
-            recyclerView.setAdapter(adapter);
-
-            databaseReference = FirebaseDatabase.getInstance().getReference("chronosaurus");
-            dialog.show();
-
-            valueEventListener = databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    dataList.clear();
-                    for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
-                        DataClass dataClass = itemSnapshot.getValue(DataClass.class);
-                        dataClass.setKey(itemSnapshot.getKey());
-                        dataList.add(dataClass);
-                    }
-                    adapter.notifyDataSetChanged();
-                    dialog.dismiss();
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-                    dialog.dismiss();
-                }
-            });
-
-            addClass.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(ClassesClass.this, UploadActivity.class);
-                    startActivity(intent);
-                }
-            });
-        }
-    }
-
 
     @Override
     public void onDestroyView() {

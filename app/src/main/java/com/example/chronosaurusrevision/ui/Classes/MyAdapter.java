@@ -44,8 +44,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
         holder.recCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Context ClassesFragment = null;
-                Intent intent = new Intent(ClassesFragment, DetailActivity.class);
+                Intent intent = new Intent(context, DetailActivity.class);
                 intent.putExtra("Course", dataList.get(holder.getLayoutPosition()).getDataName());
                 intent.putExtra("Professor", dataList.get(holder.getLayoutPosition()).getDataProf());
                 intent.putExtra("Times", dataList.get(holder.getLayoutPosition()).getDataTime());
