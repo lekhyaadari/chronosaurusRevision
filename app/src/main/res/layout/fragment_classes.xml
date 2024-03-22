@@ -21,14 +21,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:text="Class Schedule"
             android:textSize="36sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            android:textColor="@color/holo_purple"
+            android:textStyle="bold" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="click plus button to add a class"
+            android:layout_marginStart="20dp"
             android:textSize="20sp"
             android:textColor="@color/black"/>
     </LinearLayout>
@@ -41,6 +43,7 @@
         android:layout_marginTop="490dp"
         android:contentDescription="add"
         android:src="@drawable/round_add_circle_24"
+        android:backgroundTint="@color/light_holo"
         android:tint="@color/white" />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout

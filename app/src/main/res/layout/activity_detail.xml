@@ -104,6 +104,7 @@
             android:clickable="true"
             android:contentDescription="delete"
             android:src="@drawable/baseline_delete_24"
+            android:backgroundTint="@color/light_holo"
             android:focusable="true">
         </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
@@ -115,6 +116,7 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="40dp"
             android:clickable="true"
+            android:backgroundTint="@color/light_holo"
             android:contentDescription="update"
             android:src="@drawable/baseline_edit_24"
             android:focusable="true">

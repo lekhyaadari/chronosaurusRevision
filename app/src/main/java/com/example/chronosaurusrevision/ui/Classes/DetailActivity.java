@@ -108,6 +108,7 @@ public class DetailActivity extends AppCompatActivity {
                 yes.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        editConfirm.dismiss();
                         Intent intent = new Intent(DetailActivity.this, UpdateActivity.class)
                                 .putExtra("Course", detailCourse.getText().toString())
                                 .putExtra("Professor", detailProf.getText().toString())
@@ -116,8 +117,8 @@ public class DetailActivity extends AppCompatActivity {
                                 .putExtra("Days", detailDays.getText().toString())
                                 .putExtra("Sec", detailSec.getText().toString())
                                 .putExtra("Key", key);
-                        DetailActivity.this.startActivity(intent);
-                        finish();
+                        startActivity(intent);
+                        //finish();
                     }
                 });
 

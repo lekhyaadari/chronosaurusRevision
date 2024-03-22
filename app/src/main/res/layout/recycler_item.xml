@@ -34,20 +34,20 @@
             android:layout_toEndOf="@+id/recImage"
             android:text="Course Name"
             android:textColor="@color/holo_purple"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/recProf"
             android:layout_width="120dp"
-            android:layout_height="45dp"
+            android:layout_height="65dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
             android:layout_toEndOf="@+id/recCourse"
             android:text="Name of Professor or Instructor"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/recTime"
@@ -59,7 +59,7 @@
             android:layout_toEndOf="@+id/recImage"
             android:text="Meeting Times"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="16sp" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

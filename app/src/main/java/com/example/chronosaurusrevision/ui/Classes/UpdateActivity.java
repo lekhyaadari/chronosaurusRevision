@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.app.Activity;
+import android.content.Intent;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,8 +21,7 @@ public class UpdateActivity extends AppCompatActivity {
 
     Button updateButton;
     EditText updateCourse, updateProf, updateTime, updatePlace, updateDays, updateSec;
-    String course, prof, time, place, days, sec;
-    String key = "";
+    String key;
     DatabaseReference databaseReference;
 
     @Override
@@ -64,12 +65,12 @@ public class UpdateActivity extends AppCompatActivity {
 //    }
 
     public void updateData(){
-        course = updateCourse.getText().toString().trim();
-        prof = updateProf.getText().toString().trim();
-        time = updateTime.getText().toString().trim();
-        days = updateDays.getText().toString().trim();
-        place = updatePlace.getText().toString().trim();
-        sec = updateSec.getText().toString().trim();
+        String course = updateCourse.getText().toString().trim();
+        String prof = updateProf.getText().toString().trim();
+        String time = updateTime.getText().toString().trim();
+        String days = updateDays.getText().toString().trim();
+        String place = updatePlace.getText().toString().trim();
+        String sec = updateSec.getText().toString().trim();
 
         DataClass dataClass = new DataClass(course, prof, time, place, days, sec);
 
