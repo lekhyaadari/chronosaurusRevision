@@ -55,9 +55,9 @@ public class AddNewTask extends BottomSheetDialogFragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        newTaskText = Objects.requireNonNull(getView()).findViewById(R.id.newTaskText);
+        newTaskText = requireView().findViewById(R.id.newTaskText);
         newTaskSaveButton = getView().findViewById(R.id.newTaskButton);
-        newTaskDate = Objects.requireNonNull(getView()).findViewById(R.id.dueDate);
+        newTaskDate = requireView().findViewById(R.id.dueDate);
 
 
         boolean isUpdate = false;
@@ -70,7 +70,7 @@ public class AddNewTask extends BottomSheetDialogFragment {
             assert task != null;
 
             if(task.length() > 0) {
-                newTaskSaveButton.setTextColor(ContextCompat.getColor(Objects.requireNonNull(getContext()), com.google.android.material.R.color.design_default_color_primary));
+                newTaskSaveButton.setTextColor(ContextCompat.getColor(requireContext(), com.google.android.material.R.color.design_default_color_primary));
             }
         }
 

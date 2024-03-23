@@ -12,6 +12,6 @@
     <string name="course_number">Course Number</string>
     <string name="due_date">Due Date (MM/DD)</string>
     <string name="save">Save</string>
-    <string name="tasks">Tasks</string>
+    <string name="tasks"> </string>
     <!--    <string name="title_tasks">Tasks</string>-->
 </resources>

@@ -19,6 +19,7 @@ import com.example.chronosaurusrevision.ui.Tasks.TasksFragment;
 import com.example.chronosaurusrevision.ui.Tasks.Utils.DatabaseHandler;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
     private final DatabaseHandler db;
@@ -60,7 +61,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         return integer!=0;
     }
     public Context getContext() {
-        return activity.getContext();
+        return activity.getActivity();
     }
     public void setTasks(List<ToDoModel> todoList){
         this.todoList = todoList;
@@ -86,7 +87,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ViewHolder> {
         bundle.putString("task", item.getTask());
         AddNewTask fragment = new AddNewTask();
         fragment.setArguments(bundle);
-        fragment.show(activity.getChildFragmentManager(), AddNewTask.TAG);
+        fragment.show(activity.requireActivity().getSupportFragmentManager(), AddNewTask.TAG);
     }
     public static class ViewHolder extends RecyclerView.ViewHolder {
         CheckBox task;
