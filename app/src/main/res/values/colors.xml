@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="holo_purple">@android:color/holo_purple</color>
+    <color name ="light_holo">@android:color/holo_purple</color>
+    <color name="colorAccent">#000000</color>
 </resources>

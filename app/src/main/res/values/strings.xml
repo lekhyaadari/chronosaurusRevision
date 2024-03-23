@@ -8,5 +8,10 @@
     <string name="assignHome">Assignments and Exams</string>
     <string name="tasksHome">Tasks</string>
     <string name="title_notifications">Tasks</string>
-<!--    <string name="title_tasks">Tasks</string>-->
+    <string name="new_task">New Task</string>
+    <string name="course_number">Course Number</string>
+    <string name="due_date">Due Date (MM/DD)</string>
+    <string name="save">Save</string>
+    <string name="tasks">Tasks</string>
+    <!--    <string name="title_tasks">Tasks</string>-->
 </resources>
